@@ -11,7 +11,7 @@ export function classNames<ClassNamesProps>(cls = '', additional = [''], mods = 
 
     return [
         cls,
-        ...additional,
+        ...additional.filter(Boolean),
         ...Object.entries(mods).filter(([className, value]) => Boolean(value))
         .map(([className, value]) => className)
     ].join(' ') 
