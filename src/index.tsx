@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "app/provider/themeProvider";
 import App from "app/App";
 
+import 'shared/config/i18next/i18next';
 
 const container = document.getElementById("root");
 const root = createRoot(container);

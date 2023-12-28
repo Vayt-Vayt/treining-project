@@ -24,7 +24,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
             clean: true,
         },
         devtool: isDev ? 'inline-source-map' : undefined,
-        plugins: bildPlugins(paths.html),
+        plugins: bildPlugins(paths.html, isDev),
         devServer: isDev ? buildDevServer(options) : undefined
       }
 }
