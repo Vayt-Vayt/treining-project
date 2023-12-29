@@ -1,18 +1,19 @@
 import { useTheme } from "./provider/themeProvider";
 import { classNames } from "shared/lib/classNames/classNames";
-import { AppRouter } from "./provider/router";
 
-import "./styles/index.scss";
+import { AppRouter } from "./provider/router";
 import { NavBar } from "widgets/navbar";
 import { SideBar } from "widgets/sidebar";
 import { Suspense } from "react";
+
+import "./styles/index.scss";
 
 const App = () => {
   const { theme } = useTheme();
 
   return (
     <div className={classNames("App", [theme])}>
-      <Suspense fallback=''>
+      <Suspense fallback="">
         <NavBar />
         <div className="contant-page">
           <SideBar />
