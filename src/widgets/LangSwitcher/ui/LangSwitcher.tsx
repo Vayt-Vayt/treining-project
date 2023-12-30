@@ -10,19 +10,18 @@ interface LangSwitcherProps {
   className?: string;
 }
 export const LangSwitcher: FC<LangSwitcherProps> = (props) => {
-  const { t, i18n } = useTranslation();
-  const { className } = props;
+    const { t, i18n } = useTranslation();
+    const { className } = props;
+    const toggleLang = async () =>
+        await i18n.changeLanguage(i18n.language === "ru" ? "en" : "ru");
 
-  const toggleLang = async () =>
-    await i18n.changeLanguage(i18n.language === "ru" ? "en" : "ru");
-
-  return (
-    <Button
-      onClick={toggleLang}
-      theme={ThemeButton.CLEAR}
-      className={classNames(cls.LangSwitcher, [className])}
-    >
-      {t("RU")}
-    </Button>
-  );
+    return (
+        <Button
+            onClick={toggleLang}
+            theme={ThemeButton.CLEAR}
+            className={classNames(cls.LangSwitcher, [className])}
+        >
+            {t("RU")}
+        </Button>
+    );
 };
