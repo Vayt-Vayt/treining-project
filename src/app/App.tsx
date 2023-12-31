@@ -12,6 +12,8 @@ import { PageLoader } from "widgets/PageLoader/PageLoader";
 const App = () => {
     const { theme } = useTheme();
 
+   
+
     return (
         <div className={classNames("App", [theme])}>
             <Suspense fallback={<PageLoader />}>
