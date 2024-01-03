@@ -17,20 +17,6 @@ module.exports = {
 		'plugin:i18next/recommended',
 		'plugin:storybook/recommended',
 	],
-	overrides: [{
-		env: {
-			node: true,
-			jest: true,
-		},
-		files: ['.eslintrc.{js,cjs}', '**/src/**/*.test.{ts,tsx}'],
-		parserOptions: {
-			ecmaFeatures: {
-				jsx: true,
-			},
-			ecmaVersion: 'latest',
-			sourceType: 'module',
-		},
-	}],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		// Project: 'tsconfig.json',
@@ -72,4 +58,21 @@ module.exports = {
 	globals: {
 		__IS_DEV__: true,
 	},
+	overrides: [{
+		env: {
+			node: true,
+			jest: true,
+		},
+		files: ['**/src/**/*.test.{ts,tsx}'],
+		parserOptions: {
+			ecmaFeatures: {
+				jsx: true,
+			},
+			ecmaVersion: 'latest',
+			sourceType: 'module',
+		},
+		rules: {
+			'i18next/no-literal-string': 'off'
+		}
+	}],
 };

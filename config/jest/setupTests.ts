@@ -1,4 +1,4 @@
 import 'regenerator-runtime/runtime';
-// import '@testing-library/jest-dom/extend-expect';
-// import '@testing-library/jest-dom';
-// import '@testing-library/react';
+import '@testing-library/react';
+import '@testing-library/jest-dom/jest-globals';
+import '@testing-library/jest-dom';
