@@ -1,4 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import Button, { ThemeButton } from "./Button";
