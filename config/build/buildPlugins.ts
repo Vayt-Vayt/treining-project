@@ -17,14 +17,15 @@ export function bildPlugins(paths: string, isDev: boolean): webpack.WebpackPlugi
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev)
         }),
-        new BundleAnalyzerPlugin({
-            openAnalyzer: false
-        }),
+       
     ]
 
     if (isDev) {
         plugin.push(new webpack.HotModuleReplacementPlugin())
         plugin.push(new ReaactRefreshWebpackPlugin())
+        plugin.push( new BundleAnalyzerPlugin({
+            openAnalyzer: false
+        }),)
     }
 
     return plugin
