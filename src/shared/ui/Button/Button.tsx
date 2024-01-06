@@ -5,19 +5,38 @@ import cls from "./Button.module.scss";
 
 export enum ThemeButton {
   CLEAR = "clear",
-  OUTLINE = "outline"
+  OUTLINE = "outline",
+  BACKGRAUND = "backgraund",
+  BACKGRAUND_INVERTED = "backgraund_inverted",
+}
+
+export enum SizeButton {
+  M = "size_m",
+  L = "size_l",
+  XL = "size_xl",
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   theme?: ThemeButton;
+  square?: boolean;
+  size?: SizeButton;
 }
 
+
+
 const Button: FC<ButtonProps> = (props) => {
-    const { className, theme, children, ...otherProps } = props;
+    const { className, theme, square, size, children, ...otherProps } = props;
+
+    const mods: Record<string, boolean> = {
+        [cls.square]: square
+    }
+
+    const additional = [className, cls[theme], cls[size]]
+
     return (
         <button
-            className={classNames(cls.Button, [className, cls[theme]])}
+            className={classNames(cls.Button, additional, mods)}
             {...otherProps}
         >
             {children}

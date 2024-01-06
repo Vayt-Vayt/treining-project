@@ -11,22 +11,13 @@ interface NavBarProps {
 }
 
 export const NavBar: FC<NavBarProps> = ({ className }) => {
-  const { t } = useTranslation();
+    const { t } = useTranslation();
 
-  return (
-    <div className={classNames(cls.NavBar, [className])}>
-      <div className={cls.links}>
-        <AppLink
-          className={cls.mainLink}
-          to={"/"}
-          theme={ThemeLink.IN_SECONDARY}
-        >
-          {t("Главная")}
-        </AppLink>
-        <AppLink to={"/about"} theme={ThemeLink.IN_SECONDARY}>
-          {t("О сайте")}
-        </AppLink>
-      </div>
-    </div>
-  );
+    return (
+        <div className={classNames(cls.NavBar, [className])}>
+            <div className={cls.links}>
+                
+            </div>
+        </div>
+    );
 };

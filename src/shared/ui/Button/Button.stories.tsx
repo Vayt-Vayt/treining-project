@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Button, { ThemeButton } from './Button';
+import Button, { SizeButton, ThemeButton } from './Button';
 
 import "app/styles/index.scss"
 import { ThemeDecorators } from 'shared/config/storybook/decorators/ThemeDecorators';
@@ -42,6 +42,33 @@ export const Outline: Story = {
 
 };
 
+export const Outline_size_m: Story = {
+    args: {
+        theme:ThemeButton.OUTLINE,
+        children: "button",
+        size: SizeButton.M
+    },
+
+};
+
+export const Outline_size_l: Story = {
+    args: {
+        theme:ThemeButton.OUTLINE,
+        children: "button",
+        size: SizeButton.L
+    },
+
+};
+
+export const Outline_size_xl: Story = {
+    args: {
+        theme:ThemeButton.OUTLINE,
+        children: "button",
+        size: SizeButton.XL
+    },
+
+};
+
 export const OutlineDark: Story = {
     args: {
         theme:ThemeButton.OUTLINE,
@@ -49,7 +76,55 @@ export const OutlineDark: Story = {
     },
     decorators: [
         (Story) => ThemeDecorators(Theme.DARK)(Story)
-
     ]
 
+};
+
+export const BACKGRAUND: Story = {
+    args: {
+        theme:ThemeButton.BACKGRAUND,
+        children: "button"
+    },
+};
+
+export const BACKGRAUND_INVERTED: Story = {
+    args: {
+        theme:ThemeButton.BACKGRAUND_INVERTED,
+        children: "button"
+    },
+};
+
+export const Square: Story = {
+    args: {
+        theme:ThemeButton.BACKGRAUND_INVERTED,
+        children: "button",
+        square: true,
+    },
+};
+
+export const Square_Size_m: Story = {
+    args: {
+        theme:ThemeButton.BACKGRAUND_INVERTED,
+        square: true,
+        size: SizeButton.M,
+        children: ">"
+    },
+};
+
+export const Square_Size_l: Story = {
+    args: {
+        theme:ThemeButton.BACKGRAUND_INVERTED,
+        square: true,
+        size: SizeButton.L,
+        children: ">",
+    },
+};
+
+export const Square_Size_xl: Story = {
+    args: {
+        theme:ThemeButton.BACKGRAUND_INVERTED,
+        square: true,
+        size: SizeButton.XL,
+        children: ">"
+    },
 };
