@@ -5,10 +5,13 @@ import { FC } from "react";
 import "../../../../app/styles/index.scss"
 
 // eslint-disable-next-line react/display-name
-export const ThemeDecorators = (theme: Theme) => (StoryComponent: FC) => (
-    <ThemeProvider themeDef={theme}>
-        <div className={`App ${theme}`}>
-            <StoryComponent />
-        </div>
-    </ThemeProvider>
-)
+export const ThemeDecorators = (theme: Theme) => (StoryComponent: FC) => {
+
+    return(
+        <ThemeProvider themeDef={theme}>
+            <div className={`App ${theme}`}>
+                <StoryComponent />
+            </div>
+        </ThemeProvider>
+    )
+}
