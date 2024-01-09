@@ -7,16 +7,19 @@ import { ErrorBoundary } from "app/provider/errorBondary";
 import "shared/config/i18next/i18next";
 
 import "app/styles/index.scss"
+import { StoreProvider } from "app/provider/storeProvider";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
 
 root.render(
-    <BrowserRouter>
-        <ErrorBoundary>
-            <ThemeProvider>
-                <App />
-            </ThemeProvider>
-        </ErrorBoundary>
-    </BrowserRouter>
+    <StoreProvider>
+        <BrowserRouter>
+            <ErrorBoundary>
+                <ThemeProvider>
+                    <App />
+                </ThemeProvider>
+            </ErrorBoundary>
+        </BrowserRouter>
+    </StoreProvider>
 );
