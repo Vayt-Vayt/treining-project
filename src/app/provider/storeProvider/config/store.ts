@@ -2,13 +2,15 @@ import { ReducersMapObject, configureStore } from '@reduxjs/toolkit'
 import { StateShema } from './StateShema';
 import { counterReducer } from 'entities/Counter/model/slice/CounterSlice';
 import { useDispatch } from 'react-redux';
+import { userReducer } from 'entities/User';
 
 
 export function createReduxStore(
     initialState?: StateShema,
 ) {
     const rootReducer: ReducersMapObject<StateShema> = {
-        counter: counterReducer
+        counter: counterReducer,
+        user: userReducer
     };
 
 

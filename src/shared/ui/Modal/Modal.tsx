@@ -10,13 +10,20 @@ interface ModalProps {
     children?: React.ReactNode;
     isOpen?: boolean;
     onClose?: () => void;
+    lazy?: boolean;
 }
+
+interface KeyboardEvent  {
+    key: string;
+  }
 
 const ANIMATION_DELAY = 300;
 
 const Modal: FC<ModalProps> = (props) => {
-    const { className, children, isOpen, onClose } = props;
+    const { className, children, isOpen, onClose, lazy } = props;
     const [isClosing, setIsClosing] = useState(false);
+
+    const [isMounted, setIsMounted] = useState(false)
 
     const timerRef = useRef<ReturnType<typeof setTimeout>>()
 
@@ -34,11 +41,12 @@ const Modal: FC<ModalProps> = (props) => {
         e.stopPropagation()
     }
 
-    const onKeyDown = useCallback((event: React.KeyboardEvent) =>  {
+    const onKeyDown = useCallback((event: KeyboardEvent) =>  {
         if(event.key === "Escape") {
             closeHandler()
         }
     }, [closeHandler])
+  
 
     const mods: Record<string, boolean> = {
         [cls.opened]: isOpen,
@@ -47,14 +55,24 @@ const Modal: FC<ModalProps> = (props) => {
 
     useEffect(() => {
         if(isOpen) {
-            window.addEventListener("keydown", () => onKeyDown)
+            setIsMounted(true)
+        }
+    }, [isOpen])
+
+    useEffect(() => {
+        if(isOpen) {
+            window.addEventListener("keydown", onKeyDown)
         }
 
         return () => {
             clearTimeout(timerRef.current);
-            window.removeEventListener("keydown", () => onKeyDown)
+            window.removeEventListener("keydown", onKeyDown)
         }
     }, [isOpen, onKeyDown])
+
+    if(lazy && !isMounted) {
+        return null
+    }
 
     return (
         <Portal>

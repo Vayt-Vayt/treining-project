@@ -7,8 +7,9 @@ describe("Counter", () => {
     test("render", () => {
         ComponentRender(<Counter />, "/", {
             counter: {
-                value:10
-            }
+                value: 10
+            },
+            user: undefined
         })
 
         expect(screen.getByTestId("value-title")).toHaveTextContent("10")
@@ -17,8 +18,9 @@ describe("Counter", () => {
     test("increment", () => {
         ComponentRender(<Counter />, "/", {
             counter: {
-                value:10
-            }
+                value: 10
+            },
+            user: undefined
         })
 
         userEvent.click(screen.getByTestId("increment-btn"));
@@ -28,8 +30,9 @@ describe("Counter", () => {
     test("decrement", () => {
         ComponentRender(<Counter />, "/", {
             counter: {
-                value:10
-            }
+                value: 10
+            },
+            user: undefined
         })
 
         userEvent.click(screen.getByTestId("decrement-btn"));

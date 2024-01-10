@@ -6,7 +6,8 @@ describe('getCounter', () => {
         const state: StateShema = {
             counter: {
                 value: 10
-            }
+            },
+            user: undefined
         }
         expect(getCounterValue(state)).toEqual(10)
 
