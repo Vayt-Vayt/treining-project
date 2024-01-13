@@ -22,8 +22,8 @@ const ANIMATION_DELAY = 300;
 const Modal: FC<ModalProps> = (props) => {
     const { className, children, isOpen, onClose, lazy } = props;
     const [isClosing, setIsClosing] = useState(false);
-
-    const [isMounted, setIsMounted] = useState(false)
+    const [isMounted, setIsMounted] = useState(false);
+    const [isOpening, setIsOpening] = useState(false);
 
     const timerRef = useRef<ReturnType<typeof setTimeout>>()
 
@@ -49,8 +49,8 @@ const Modal: FC<ModalProps> = (props) => {
   
 
     const mods: Record<string, boolean> = {
-        [cls.opened]: isOpen,
-        [cls.isClosing]: isClosing 
+        [cls.opened]: isOpening,
+        [cls.isClosing]: isClosing
     }
 
     useEffect(() => {
@@ -62,11 +62,15 @@ const Modal: FC<ModalProps> = (props) => {
     useEffect(() => {
         if(isOpen) {
             window.addEventListener("keydown", onKeyDown)
+            timerRef.current = setTimeout(() => {
+                setIsOpening(true);
+            }, 0);
         }
 
         return () => {
             clearTimeout(timerRef.current);
             window.removeEventListener("keydown", onKeyDown)
+            setIsOpening(false);
         }
     }, [isOpen, onKeyDown])
 

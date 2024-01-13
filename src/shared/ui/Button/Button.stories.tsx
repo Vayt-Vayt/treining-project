@@ -136,3 +136,11 @@ export const Square_Size_xl: Story = {
         children: ">"
     },
 };
+
+export const Disabled: Story = {
+    args: {
+        theme:ThemeButton.BACKGRAUND_INVERTED,
+        children: "click me",
+        disabled: true
+    },
+};

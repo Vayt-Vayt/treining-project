@@ -9,7 +9,8 @@ describe("Counter", () => {
             counter: {
                 value: 10
             },
-            user: undefined
+            user: undefined,
+            loginForm: undefined
         })
 
         expect(screen.getByTestId("value-title")).toHaveTextContent("10")
@@ -20,7 +21,8 @@ describe("Counter", () => {
             counter: {
                 value: 10
             },
-            user: undefined
+            user: undefined,
+            loginForm: undefined
         })
 
         userEvent.click(screen.getByTestId("increment-btn"));
@@ -32,7 +34,8 @@ describe("Counter", () => {
             counter: {
                 value: 10
             },
-            user: undefined
+            user: undefined,
+            loginForm: undefined
         })
 
         userEvent.click(screen.getByTestId("decrement-btn"));

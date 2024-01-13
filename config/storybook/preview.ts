@@ -4,8 +4,9 @@ import {
     StyleDecorators,
     ThemeDecorators,
     i18nDecorators,
-    RouteDecorators
-} from "../../src/shared/config/storybook/decorators/index"
+    RouteDecorators,
+    StoreDecorators
+} from "../../src/shared/config/storybook/decorators/index.ts"
 
 
 import "../../src/app/styles/index.scss";
@@ -25,8 +26,12 @@ const preview: Preview = {
         (Story) => StyleDecorators(Story),
         (Story) => ThemeDecorators(Theme.LIGHT)(Story),
         (Story) => i18nDecorators(Story),
-        (Story) => RouteDecorators(Story)
-    ]
+        (Story) => RouteDecorators(Story),
+        (Story) => StoreDecorators(Story)
+    ],
+    globals: {
+        __IS_DEV__: true
+    },
 };
 
 export default preview;

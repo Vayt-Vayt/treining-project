@@ -7,7 +7,8 @@ describe('getCounter', () => {
             counter: {
                 value: 10
             },
-            user: undefined
+            user: undefined,
+            loginForm: undefined
         }
         expect(getCounterValue(state)).toEqual(10)
 

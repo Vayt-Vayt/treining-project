@@ -13,7 +13,8 @@ const meta = {
     argTypes: {},
     args: {
         isOpen: true,
-    }
+    },
+ 
 
 } satisfies Meta<typeof LoginModal>;
 

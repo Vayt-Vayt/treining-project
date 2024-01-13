@@ -1,3 +1,5 @@
+import { getUserAuthData } from "./model/selectors/getUserAuthData/getUserAuthData";
+
 export { 
     userActions,
     userReducer 
@@ -5,3 +7,7 @@ export {
 
 export type { UserShema, User } from "./model/type/UserShema"
 
+
+export {
+    getUserAuthData
+}
