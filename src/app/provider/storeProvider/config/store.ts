@@ -2,8 +2,8 @@ import { ReducersMapObject, configureStore } from '@reduxjs/toolkit'
 import { StateShema } from './StateShema';
 import { useDispatch } from 'react-redux';
 import { userReducer } from 'entities/User';
-import { loginReducer } from 'features/AuthByUserName';
 import { counterReducer } from 'entities/Counter';
+import { createReducerManager } from './reducerManager';
 
 
 export function createReduxStore(
@@ -12,15 +12,17 @@ export function createReduxStore(
     const rootReducer: ReducersMapObject<StateShema> = {
         counter: counterReducer,
         user: userReducer,
-        loginForm: loginReducer,
     };
 
+    const reducerManager = createReducerManager(rootReducer)
 
     const store = configureStore({
-        reducer: rootReducer,
+        reducer: reducerManager.reduce,
         preloadedState: initialState,
         devTools: __IS_DEV__,
     });
+    //    @ts-ignore
+    store.reducerManager = reducerManager
 
     return store;
 }

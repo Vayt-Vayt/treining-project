@@ -1,9 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC, Suspense, useEffect } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import Modal from 'shared/ui/Modal/Modal';
 
 import cls from "./LoginModal.module.scss"
-import { LoginForm } from '../LoginForm/LoginForm';
+import { LoginFormlAsync } from '../LoginForm/LoginFormAsync';
+import Loader from 'shared/ui/Loader/Loader';
+import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
 
 interface LoginModalProps {
     className?: string;
@@ -14,8 +16,15 @@ interface LoginModalProps {
 
 export const LoginModal: FC<LoginModalProps> = (props) => {
     const { className, isOpen, onClose, lazy } = props
+    const isAuth = localStorage.getItem(USER_LOCALSTORAGE_KEY)
     
-    
+    useEffect(() => {
+        if(isAuth) {
+            onClose()
+        }
+    }, [isAuth, onClose])
+
+    console.log(isOpen, "modalform")
     return (
         <Modal 
             className={classNames(cls.LoginModal, [className])}
@@ -23,7 +32,9 @@ export const LoginModal: FC<LoginModalProps> = (props) => {
             onClose={onClose}
             lazy={lazy}
         >
-            <LoginForm />
+            <Suspense fallback={<Loader />}>
+                <LoginFormlAsync />
+            </Suspense>
         </Modal>
     );
 };

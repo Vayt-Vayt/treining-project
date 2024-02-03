@@ -43,11 +43,11 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
             <div className={cls.links}>
                 <Button theme={ThemeButton.CLEAR_IN} onClick={onToggle}>{t("Войти")}</Button>
             </div>
-            <LoginModal 
+            {isOpen && <LoginModal 
                 isOpen={isOpen}
                 onClose={onToggle}
                 lazy 
-            />
+            />}
         </div>
     );
 };
