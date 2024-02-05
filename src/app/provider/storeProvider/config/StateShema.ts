@@ -1,5 +1,6 @@
 import { EnhancedStore, Reducer, ReducersMapObject, UnknownAction } from "@reduxjs/toolkit";
 import { CounterShema } from "entities/Counter";
+import { ProfileShema } from "entities/Profile";
 import { UserShema } from "entities/User";
 import { LoginShema } from "features/AuthByUserName";
 
@@ -9,6 +10,7 @@ export interface StateShema {
     counter: CounterShema;
     user: UserShema;
     loginForm?: LoginShema;
+    profile?: ProfileShema;
 }
 
 

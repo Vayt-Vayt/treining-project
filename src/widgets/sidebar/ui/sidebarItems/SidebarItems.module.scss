@@ -1,0 +1,18 @@
+.linkText {
+    visibility: visible;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    fill: var(--inverted-secondary-color);
+}
+
+.collapsed {
+    .linkText {
+        visibility: hidden;
+        transition: 0.2s visibility;
+        width: 0;
+    }
+}

@@ -11,5 +11,6 @@
     "Вы ввели не верный логин или пароль!": "You have entered the wrong username or password!",
     "Введите логин": "Enter login",
     "Введите пароль": "Enter password",
-    "Выйти": "Go out"
+    "Выйти": "Go out",
+    "Страница профиля": "Profile Page"
 }

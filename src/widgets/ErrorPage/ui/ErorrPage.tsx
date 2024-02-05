@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import cls from "./ErrorPage.module.scss";
@@ -9,7 +9,7 @@ interface ErrorPageProps {
     className?: string;
 }
 
-export const ErorrPage: FC<ErrorPageProps> = ({ className }) => {
+export const ErorrPage: FC<ErrorPageProps> = memo(({ className }) => {
     const { t } = useTranslation();
 
     const reloadPage = () => location.reload()
@@ -25,4 +25,6 @@ export const ErorrPage: FC<ErrorPageProps> = ({ className }) => {
             </Button>
         </div>
     );
-};
+});
+
+ErorrPage.displayName = "ErorrPage"

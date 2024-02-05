@@ -19,6 +19,7 @@ import cls from "./LoginForm.module.scss";
 
 export interface LoginFormProps {
     className?: string;
+    onSuccess?: () => void;
 }
 
 const initialReducer: ReducerList = {
@@ -26,7 +27,7 @@ const initialReducer: ReducerList = {
 }
 
 const LoginForm  = memo((props: LoginFormProps) => {
-    const { className } = props;
+    const { className, onSuccess } = props;
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const username = useSelector(getLoginUsername);
@@ -42,9 +43,12 @@ const LoginForm  = memo((props: LoginFormProps) => {
         dispatch(loginActions.setPasword(value))
     }, [dispatch])
 
-    const onLoginClick = useCallback(() => {
-        dispatch(loginByUsername({password, username}))
-    }, [dispatch, password, username])
+    const onLoginClick = useCallback( async () => {
+        const result = await dispatch(loginByUsername({password, username}))
+        if (result.meta.requestStatus === "fulfilled") {
+            onSuccess()
+        }
+    }, [dispatch, onSuccess, password, username])
 
     return (
         <DynamikModuleLoaader 
