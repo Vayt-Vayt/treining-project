@@ -4,10 +4,14 @@ import { useDispatch } from 'react-redux';
 import { userReducer } from 'entities/User';
 import { counterReducer } from 'entities/Counter';
 import { createReducerManager } from './reducerManager';
+import { $api } from 'shared/api/api';
+import { NavigateOptions, To } from 'react-router-dom';
 
 
 export function createReduxStore(
     initialState?: StateShema,
+    asyncReducers?: Partial<ReducersMapObject<StateShema>>,
+    navigate?: (to: To, options?: NavigateOptions) => void,
 ) {
     const rootReducer: ReducersMapObject<StateShema> = {
         counter: counterReducer,
@@ -20,6 +24,14 @@ export function createReduxStore(
         reducer: reducerManager.reduce,
         preloadedState: initialState,
         devTools: __IS_DEV__,
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+            thunk: {
+                extraArgument: {
+                    api: $api,
+                    navigate
+                }
+            }
+        })
     });
     //    @ts-ignore
     store.reducerManager = reducerManager

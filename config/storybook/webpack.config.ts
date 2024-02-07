@@ -29,7 +29,9 @@ export default ({config}: {config: webpack.Configuration}) => {
     // config.resolve?.modules?.push('node_modules')
     config.plugins?.push(
         new DefinePlugin({
-            __IS_DEV__: true
+            __IS_DEV__: true,
+            __API__: ""
+
         })
     );
     config.resolve?.extensions?.push("ts", "tsx")

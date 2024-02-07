@@ -4,7 +4,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import ReaactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
-export function bildPlugins(paths: string, isDev: boolean): webpack.WebpackPluginInstance[] {
+export function bildPlugins(paths: string, isDev: boolean, apiUrl: string): webpack.WebpackPluginInstance[] {
     const plugin = [
         new HtmlWebpackPlugin({
             template: paths
@@ -15,7 +15,8 @@ export function bildPlugins(paths: string, isDev: boolean): webpack.WebpackPlugi
             chunkFilename: 'css/[name].[contenthash:8].css',
         }),
         new webpack.DefinePlugin({
-            __IS_DEV__: JSON.stringify(isDev)
+            __IS_DEV__: JSON.stringify(isDev),
+            __API__: JSON.stringify(apiUrl)
         }),
        
     ]

@@ -9,7 +9,7 @@ import { buildDevServer } from './buildDevAerver';
 
 
 export function buildWebpackConfig(options: BuildOptions): webpack.Configuration {
-    const { mode, paths, isDev } = options
+    const { mode, paths, isDev, apiUrl } = options
 
     return {
         mode,
@@ -24,7 +24,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
             clean: true,
         },
         devtool: isDev ? 'inline-source-map' : undefined,
-        plugins: bildPlugins(paths.html, isDev),
+        plugins: bildPlugins(paths.html, isDev, apiUrl),
         devServer: isDev ? buildDevServer(options) : undefined
     }
 }
