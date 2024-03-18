@@ -6,6 +6,7 @@ import { counterReducer } from 'entities/Counter';
 import { createReducerManager } from './reducerManager';
 import { $api } from 'shared/api/api';
 import { NavigateOptions, To } from 'react-router-dom';
+import { CombinedSliceReducer } from '@reduxjs/toolkit/dist/combineSlices';
 
 
 export function createReduxStore(
@@ -21,7 +22,7 @@ export function createReduxStore(
     const reducerManager = createReducerManager(rootReducer)
 
     const store = configureStore({
-        reducer: reducerManager.reduce,
+        reducer: reducerManager.reduce as CombinedSliceReducer<StateShema>,
         preloadedState: initialState,
         devTools: __IS_DEV__,
         middleware: (getDefaultMiddleware) => getDefaultMiddleware({

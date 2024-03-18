@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 
 import cls from "./ProfilePage.module.scss"
-import { useTranslation } from 'react-i18next';
 import { DynamikModuleLoaader, ReducerList } from 'shared/lib/components/DynamikModuleLoaader/DynamikModuleLoaader';
-import { profileReducer } from 'entities/Profile';
+import { ProfileCard, fetchProfileData, profileReducer } from 'entities/Profile';
+import { useAppDispatch } from 'app/provider/storeProvider';
 
 
 const reducers: ReducerList = {
@@ -17,12 +17,16 @@ interface ProfilePageProps {
 
 const ProfilePage: FC<ProfilePageProps> = (props) => {
     const { className } = props;
-    const { t } = useTranslation();
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(fetchProfileData())
+    }, [dispatch])
 
     return (
         <DynamikModuleLoaader reducers={reducers} removeAfterUnmount>
             <div className={classNames(cls.ProfilePage, [className])}>
-                {t("Страница профиля")}
+                <ProfileCard />
             </div>
         </DynamikModuleLoaader>
     );

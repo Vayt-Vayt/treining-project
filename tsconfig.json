@@ -9,6 +9,7 @@
       "jsx": "react-jsx",
       "allowUmdGlobalAccess": true,
       "allowJs": true,
+      "strict": true,
       "moduleResolution": "node",
       "esModuleInterop": true,
       "allowSyntheticDefaultImports": true,
@@ -26,4 +27,5 @@
         "./config/jest/setupTests.ts",
         "src"
       ],
+      
   }

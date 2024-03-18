@@ -9,7 +9,14 @@ import { buildCSSLoaders } from "./loaders/buildCSSLoaders";
 export function buildLoaders(isDev: boolean): webpack.RuleSetRule[] {
     const typeScriptLoader = {
         test: /\.tsx?$/,
-        use: "ts-loader",
+        use: [
+            {
+                loader: 'ts-loader',
+                options: {
+                    transpileOnly: true,
+                },
+            },
+        ],
         exclude: /node_modules/,
     };
 

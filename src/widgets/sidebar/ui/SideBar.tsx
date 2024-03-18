@@ -1,5 +1,5 @@
 /* eslint-disable i18next/no-literal-string */
-import React, { FC, useMemo, useState } from "react";
+import React, { FC, useState } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 
 import Button, { SizeButton, ThemeButton } from "shared/ui/Button/Button";

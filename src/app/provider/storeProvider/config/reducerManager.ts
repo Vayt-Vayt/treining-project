@@ -14,14 +14,14 @@ export function createReducerManager(initialReducers: ReducersMapObject<StateShe
         getReducerMap: () => reducers,
   
         reduce: (state: StateShema, action: UnknownAction) => {
-            if (keysToRemove.length > 0) {
+            if (keysToRemove.length > 0 && state) { 
                 state = { ...state }
                 keysToRemove.forEach((key) =>  {
                     delete state[key]
                 })
                 keysToRemove = []
             }
-  
+            //@ts-ignore
             return combinedReducer(state, action)
         },
   

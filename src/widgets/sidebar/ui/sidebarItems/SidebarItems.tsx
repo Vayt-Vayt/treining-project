@@ -1,21 +1,21 @@
-import React, { FC, memo } from 'react';
+import React, { memo } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
 import { AppLink, ThemeLink } from 'shared/ui/AppLink/AppLink';
 import { SidebarItemsType } from 'widgets/sidebar/model/items';
+import { classNames } from 'shared/lib/classNames/classNames';
 
 import cls from "./SidebarItems.module.scss"
-import { classNames } from 'shared/lib/classNames/classNames';
 
 
 interface SidebarItemsProps {
-    items?: SidebarItemsType;
+    items: SidebarItemsType;
     collapsed?: Boolean;
 }
 
 export const SidebarItems = memo((props: SidebarItemsProps) => {
-    const { items, collapsed } = props
+    const { items, collapsed = false } = props
     const { t } = useTranslation()
 
 
@@ -34,5 +34,3 @@ export const SidebarItems = memo((props: SidebarItemsProps) => {
 });
 
 SidebarItems.displayName = "SidebarItems"
-
-// 20:13

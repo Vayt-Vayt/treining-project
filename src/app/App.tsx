@@ -4,7 +4,7 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { AppRouter } from "./provider/router";
 import { NavBar } from "widgets/navbar";
 import { SideBar } from "widgets/sidebar";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect } from "react";
 
 import "./styles/index.scss";
 import { PageLoader } from "widgets/PageLoader/PageLoader";

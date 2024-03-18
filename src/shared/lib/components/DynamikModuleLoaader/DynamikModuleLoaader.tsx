@@ -9,7 +9,7 @@ export type ReducerList = {
     [name in StateShemaKey]?: Reducer;
 }
 
-type ReducersListEntry = [StateShemaKey, Reducer]
+
 
 interface DynamikModuleLoaaderProps {
     children: React.ReactNode;
@@ -23,14 +23,14 @@ export const DynamikModuleLoaader: FC<DynamikModuleLoaaderProps> = (props) => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        Object.entries(reducers).forEach(([name, reducer]: ReducersListEntry) => {
-            store.reducerManager.add(name, reducer);
+        Object.entries(reducers).forEach(([name, reducer]) => {
+            store.reducerManager.add(name as StateShemaKey, reducer);
         })
 
         return () => {
             if(removeAfterUnmount) {
-                Object.entries(reducers).forEach(([name]: ReducersListEntry) => {
-                    store.reducerManager.remove(name)
+                Object.entries(reducers).forEach(([name]) => {
+                    store.reducerManager.remove(name as StateShemaKey)
                 })
             }
         }

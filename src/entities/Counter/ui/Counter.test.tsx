@@ -9,8 +9,14 @@ describe("Counter", () => {
             counter: {
                 value: 10
             },
-            user: undefined,
-            loginForm: undefined
+            user: {
+                authData: {
+                    id: "1",
+                    username: "asd"
+                }
+            },
+            loginForm: undefined,
+            profile: undefined
         })
 
         expect(screen.getByTestId("value-title")).toHaveTextContent("10")
@@ -21,8 +27,14 @@ describe("Counter", () => {
             counter: {
                 value: 10
             },
-            user: undefined,
-            loginForm: undefined
+            user: {
+                authData: {
+                    id: "1",
+                    username: "asd"
+                }
+            },
+            loginForm: undefined,
+            profile: undefined
         })
 
         userEvent.click(screen.getByTestId("increment-btn"));
@@ -34,8 +46,14 @@ describe("Counter", () => {
             counter: {
                 value: 10
             },
-            user: undefined,
-            loginForm: undefined
+            user: {
+                authData: {
+                    id: "1",
+                    username: "asd"
+                }
+            },
+            loginForm: undefined,
+            profile: undefined
         })
 
         userEvent.click(screen.getByTestId("decrement-btn"));
