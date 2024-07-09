@@ -27,10 +27,11 @@ const preview: Preview = {
         (Story) => ThemeDecorators(Theme.LIGHT)(Story),
         (Story) => i18nDecorators(Story),
         (Story) => RouteDecorators(Story),
-        (Story) => StoreDecorators(Story)
+        (Story) => StoreDecorators(Story),
     ],
     globals: {
-        __IS_DEV__: true
+        __IS_DEV__: true,
+        __API__: ""
     },
 };
 

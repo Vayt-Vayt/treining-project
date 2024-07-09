@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import "app/styles/index.scss"
 import { ThemeDecorators } from 'shared/config/storybook/decorators/ThemeDecorators';
 import { NavBar } from './NavBar';
 import { Theme } from 'app/provider/themeProvider';
@@ -42,8 +41,9 @@ export const ThemeLight_Auth: Story = {
                     username: 'sdf'
                 }
             },
-            counter: undefined,
-            loginForm: undefined
+            loginForm: undefined,
+            profile: undefined,
+            counter: {value:0}
         })
     ]
 };
@@ -58,8 +58,9 @@ export const ThemeDark_Auth: Story = {
                     username: 'sdf'
                 }
             },
-            counter: undefined,
-            loginForm: undefined
+            loginForm: undefined,
+            profile: undefined,
+            counter: {value:0}
         }),
         (Story) => ThemeDecorators(Theme.DARK)(Story)
     ]

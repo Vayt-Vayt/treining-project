@@ -28,6 +28,12 @@
 
 }
 
+.outline_red {
+    border: 1px solid var(--red-light);
+    color: var(--red-light);
+    background: none;
+}
+
 .backgraund {
     background: var(--bg-color);
     color: var(--primary-color);

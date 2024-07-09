@@ -1,10 +1,18 @@
 .ProfileCard {
-    padding: 20px;
-    border: 2px solid var(--inverted-bg-color);
+    padding: 10px;
 }
 
-.header {
-    display: flex;
+.data {
+    border: 2px solid var(--inverted-bg-color);
+    padding: 20px;
+
+
+}
+
+.editing {
+    .data {
+        border: 2px solid var(--inverted-secondary-color);
+    }
 }
 
 .editBtn {
@@ -15,6 +23,15 @@
     margin-top: 10px;
 }
 
-.data {
-    margin-top: 30px;
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+}
+
+.avatarWrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
